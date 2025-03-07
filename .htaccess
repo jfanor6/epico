@@ -1,0 +1,13 @@
+# Habilitar reescritura de URLs
+RewriteEngine On
+
+# Establecer la base del sitio
+RewriteBase /epico/
+
+# Evitar reescritura para los archivos dentro de la carpeta 'assets'
+RewriteCond %{REQUEST_URI} !^/epico/assets/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirigir todas las demás solicitudes a 'index.php'
+RewriteRule ^(.*)$ index.php/$1 [L]
